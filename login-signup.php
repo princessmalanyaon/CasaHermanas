@@ -187,23 +187,24 @@
         <div class="login-frontbox">
           <div class="login">
             <h2>LOG IN</h2>
-            <div class="login-inputbox">
+
+            <form class="login-inputbox" method="#" action="#">
               <input type="text" name="email" placeholder="  EMAIL" />
               <input type="password" name="password" placeholder="  PASSWORD" />
-            </div>
+              <button>LOG IN</button>
+            </form>
             <a href="#">FORGET PASSWORD?</a>
-
-            <button>LOG IN</button>
           </div>
 
           <div class="signup login-hide">
             <h2>SIGN UP</h2>
-            <div class="login-inputbox">
-              <input type="text" name="fullname" placeholder="  FULLNAME" />
-              <input type="text" name="email" placeholder="  EMAIL" />
-              <input type="password" name="password" placeholder="  PASSWORD" />
-            </div>
-            <button>SIGN UP</button>
+            <form method="post" action="InsertForm.php" class="login-inputbox">
+              <input type="text" name="UserFullName" placeholder="  FULLNAME" />
+              <input type="text" name="UserEmail" placeholder="  EMAIL" />
+              <input type="password" name="UserPassword" placeholder="  PASSWORD" />
+              <button onclick = "localhost/CasaHermanasPrincess/login-signup.php">SIGN UP</button>
+            </form>
+
           </div>
         </div>
         <!-- frontbox -->
