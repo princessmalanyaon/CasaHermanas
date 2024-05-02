@@ -188,7 +188,7 @@
           <div class="login">
             <h2>LOG IN</h2>
 
-            <form class="login-inputbox" method="#" action="#">
+            <form class="login-inputbox" method="post" action="#">
               <input type="text" name="email" placeholder="  EMAIL" />
               <input type="password" name="password" placeholder="  PASSWORD" />
               <button>LOG IN</button>
