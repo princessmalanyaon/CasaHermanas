@@ -24,23 +24,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = htmlspecialchars($_POST['password']);
 
         // Prepare SQL statement to retrieve user from database
-        $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email AND password = :password");
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password);
 
         // Execute the query
         $stmt->execute();
 
         // Check if a row is returned
         if ($stmt->rowCount() > 0) {
-            // User exists, login successful
-            echo "Login successful!";
-            // Redirect to dashboard or some other page
-            // header("Location: dashboard.php");
-            // exit();
+            // User exists, check password
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (password_verify($password, $user['password'])) {
+                // Password is correct, login successful
+                echo "Login successful!";
+                // Redirect to dashboard or some other page
+                // header("Location: dashboard.php");
+                // exit();
+            } else {
+                // Password is incorrect
+                echo "Invalid password.";
+            }
         } else {
-            // User does not exist or credentials are incorrect
-            echo "Invalid email or password.";
+            // User does not exist
+            echo "User does not exist.";
         }
     } else {
         // Email or password not provided
