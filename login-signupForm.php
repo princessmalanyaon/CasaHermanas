@@ -198,7 +198,7 @@
 
           <div class="signup login-hide">
             <h2>SIGN UP</h2>
-            <form method="post" action="InsertForm.php" class="login-inputbox">
+            <form method="post" action="SignUpForm.php" class="login-inputbox">
               <input type="text" name="UserFullName" placeholder="  FULLNAME" />
               <input type="text" name="UserEmail" placeholder="  EMAIL" />
               <input type="password" name="UserPassword" placeholder="  PASSWORD" />
