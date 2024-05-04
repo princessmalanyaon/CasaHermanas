@@ -191,7 +191,7 @@
             <form class="login-inputbox" method="post" action="#">
               <input type="text" name="email" placeholder="  EMAIL" />
               <input type="password" name="password" placeholder="  PASSWORD" />
-              <button>LOG IN</button>
+              <button onclick = "localhost/CasaHermanasPrincess/loginform.php">LOG IN</button>
             </form>
             <a href="#">FORGET PASSWORD?</a>
           </div>
