@@ -7,7 +7,7 @@ $UserPassword = $_POST["UserPassword"];
 
 try{
     //Links to Connection.php
-    require_once "Connection.php";
+    require_once "Connection1.php";
     $query = "INSERT INTO user_account(UserFullName, UserEmail, UserPassword) values
     (:UserFullName, :UserEmail, :UserPassword);";
 
