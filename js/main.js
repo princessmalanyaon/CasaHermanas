@@ -325,7 +325,8 @@ $(".show-cart").on("change", ".item-count", function (event) {
 
 displayCart();
 
-document.addEventListener("DOMContentLoaded", function () {
+/****
+  document.addEventListener("DOMContentLoaded", function () {
   const clearCartBtn = document.getElementById("clear-cart-btn");
   const totalCountSpan = document.querySelector(".total-count");
 
@@ -339,3 +340,5 @@ document.addEventListener("DOMContentLoaded", function () {
     totalCountSpan.textContent = "0";
   });
 });
+
+ */
