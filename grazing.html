@@ -7,6 +7,23 @@
     <meta content="" name="keywords" />
     <meta content="" name="description" />
 
+    <style>
+       .cart-btn {
+        position: relative;
+      }
+    
+      .total-count {
+        position: absolute;
+        top: -10px; 
+        right: -10px; 
+        background-color: #0f172b; 
+        color: white;
+        border-radius: 50%;
+        padding: 5px;
+        font-size: 12px;
+      }
+    </style>
+
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon" />
 
@@ -168,25 +185,56 @@
       </div>
       <!-- Header End -->
 
-      <!-- Page Header Start -->
-      <div
-        class="container-fluid page-header mb-5 p-0"
-        style="background-image: url(img/carousel-1.jpg)"
-      >
-        <div class="container-fluid page-header-inner py-5">
-          <div class="container text-center pb-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">
-              Grazing Table
-            </h1>
-          </div>
+       <!-- Page Header Start -->
+       <div
+       class="container-fluid page-header mb-5 p-0"
+       style="background-image: url(img/carousel-1.jpg)"
+     >
+       <div class="container-fluid page-header-inner py-5">
+         <div class="container text-center pb-5">
+           <h1 class="display-3 text-white mb-3 animated slideInDown">Grazing Table</h1>
+         </div>
+       </div>
+     </div>
+     <!-- Page Header End -->
+     
+
+
+
+
+    <!-- Modal for cart-->
+    <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="show-cart table">
+            
+          </table>
+          <div>Total price: $<span class="total-cart"></span></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Order now</button>
+          <button type="button" class="btn btn-danger" id="clear-cart-btn">Clear Cart</button>
         </div>
       </div>
-      <!-- Page Header End -->
+    </div>
+    </div> 
+
+
+
 
       <!-- Product Start -->
       <div class="container-xxl py-5">
         <div class="container">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+
             <h6 class="section-title text-center text-primary text-uppercase">
               Our Products
             </h6>
@@ -195,6 +243,7 @@
               <span class="text-primary text-uppercase">Grazing Table</span>
             </h1>
           </div>
+
           <div class="row g-4">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
               <div class="room-item shadow rounded overflow-hidden">
@@ -234,9 +283,9 @@
                     <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                       >View Detail</a
                     >
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href=""
-                      >Add to Cart</a
-                    >
+                    <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart"
+  data-name="Product1" data-price="10">Add to Cart</a>
+
                   </div>
                 </div>
               </div>
@@ -279,9 +328,8 @@
                     <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                       >View Detail</a
                     >
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href=""
-                      >add to cart</a
-                    >
+                    <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart"
+  data-name="Product2" data-price="10">Add to Cart</a>
                   </div>
                 </div>
               </div>
@@ -324,9 +372,8 @@
                     <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                       >View Detail</a
                     >
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href=""
-                      >add to cart</a
-                    >
+                    <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart"
+  data-name="Product3" data-price="10">Add to Cart</a>
                   </div>
                 </div>
               </div>
@@ -369,9 +416,8 @@
                     <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                       >View Detail</a
                     >
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href=""
-                      >add to cart</a
-                    >
+                    <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart"
+  data-name="Product4" data-price="10">Add to Cart</a>
                   </div>
                 </div>
               </div>
@@ -414,9 +460,8 @@
                     <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                       >View Detail</a
                     >
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href=""
-                      >add to cart</a
-                    >
+                    <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart"
+  data-name="Product5" data-price="10">Add to Cart</a>
                   </div>
                 </div>
               </div>
@@ -459,9 +504,8 @@
                     <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                       >View Detail</a
                     >
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href=""
-                      >add to cart</a
-                    >
+                    <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart"
+  data-name="Product6" data-price="10">Add to Cart</a>
                   </div>
                 </div>
               </div>
@@ -505,9 +549,8 @@
                       <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                         >View Detail</a
                       >
-                      <a class="btn btn-sm btn-dark rounded py-2 px-4" href=""
-                        >Add to Cart</a
-                      >
+                      <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart"
+  data-name="Product7" data-price="10">Add to Cart</a>
                     </div>
                   </div>
                 </div>
@@ -550,9 +593,8 @@
                       <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                         >View Detail</a
                       >
-                      <a class="btn btn-sm btn-dark rounded py-2 px-4" href=""
-                        >add to cart</a
-                      >
+                      <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart"
+  data-name="Product8" data-price="10">Add to Cart</a>
                     </div>
                   </div>
                 </div>
@@ -595,15 +637,16 @@
                       <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                         >View Detail</a
                       >
-                      <a class="btn btn-sm btn-dark rounded py-2 px-4" href=""
-                        >add to cart</a
-                      >
+                      <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart"
+  data-name="Product9" data-price="10">Add to Cart</a>
                     </div>
                   </div>
                 </div>
               </div>
           </div>
         </div>
+
+        
       </div>
       <!-- Room End -->
 
@@ -777,19 +820,23 @@
     </div>
     <!-- Footer End -->
 
-      <!--CART fucntion to be edited-->
-      <a
-        href="#"
-        style="margin-bottom: 70px"
-        class="btn btn-lg btn-primary btn-lg-square cart-btn"
-        ><i class="fas fa-shopping-cart"></i
-      ></a>
+      <!--CART fucntion-->
+      
+      <a href="#" style="margin-bottom: 70px" class="btn btn-lg btn-primary btn-lg-square cart-btn"  data-toggle="modal" data-target="#cart"><i class="fas fa-shopping-cart"></i> <span class="total-count">0</span></a>
+      
+  
 
       <!-- Back to Top -->
       <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
         ><i class="bi bi-arrow-up"></i
       ></a>
     </div>
+
+
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
