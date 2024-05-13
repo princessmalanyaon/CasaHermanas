@@ -185,14 +185,17 @@
         <!-- backbox -->
 
         <div class="login-frontbox">
-          <div class="login">
-            <h2>LOG IN</h2>
+ 
+            <div class="login">
+           <h2>LOG IN</h2>
+           <form class="login-inputbox" method="post" action="LogInForm.php"> <!-- Replace "login_handler.php" with the actual filename of your PHP login script -->
+          <input type="text" name="email" placeholder="EMAIL" />
+          <input type="password" name="password" placeholder="PASSWORD" />
+          <button type="submit">LOG IN</button>
+          </form>
+          <a href="#">FORGET PASSWORD?</a>
+          </div>
 
-            <form class="login-inputbox" method="post" action="#">
-              <input type="text" name="email" placeholder="  EMAIL" />
-              <input type="password" name="password" placeholder="  PASSWORD" />
-              <button>LOG IN</button>
-            </form>
             <a href="#">FORGET PASSWORD?</a>
           </div>
 
@@ -202,7 +205,7 @@
               <input type="text" name="UserFullName" placeholder="  FULLNAME" />
               <input type="text" name="UserEmail" placeholder="  EMAIL" />
               <input type="password" name="UserPassword" placeholder="  PASSWORD" />
-              <button onclick = "localhost/CasaHermanasPrincess/login-signup.php">SIGN UP</button>
+              <button">SIGN UP</button>
             </form>
 
           </div>

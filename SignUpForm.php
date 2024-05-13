@@ -27,7 +27,7 @@ try{
 
     $conn = null;
     $stmt = null;
-    header("Location: ../login-signup.php");
+    header("Location: http://127.0.0.1/CasaHermanasPrincess/index.html");
     die();
 }
 

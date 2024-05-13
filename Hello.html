@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centered Alert</title>
+<style>
+    /* Styling for the alert box */
+    .custom-alert {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: #fff;
+        border: 2px solid #333;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        font-size: 20px;
+    }
+</style>
+</head>
+<body>
+
+<button onclick="showAlert()">Show Alert</button>
+
+<div id="customAlert" class="custom-alert">
+    Hello, this is a custom alert!
+</div>
+
+<script>
+    function showAlert() {
+        var alertBox = document.getElementById('customAlert');
+        alertBox.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
