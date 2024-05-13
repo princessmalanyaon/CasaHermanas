@@ -1,70 +1,37 @@
 <?php
-// Database connection details
-$servername = "127.0.0.1";
-$username = "root";
-$password = "Banzuela@bicoluni";
-$dbname = "CasaHermanas";
-
-// Attempt database connection
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // Connection successful
-} catch(PDOException $e) {
-    // Connection failed
-    echo "Connection failed: " . $e->getMessage();
-}
-
-// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if email and password are set and not empty
-    if (!empty($_POST['email']) && !empty($_POST['password'])) {
-        // Sanitize user input to prevent SQL injection
-        $email = htmlspecialchars($_POST['email']);
-        $password = htmlspecialchars($_POST['password']);
+    $UserEmail = trim($_POST["email"]); // Trim leading and trailing spaces
+    $UserPassword = $_POST["password"];
 
-        // Prepare SQL statement to retrieve user from database
-        $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
-        $stmt->bindParam(':email', $email);
+    try {
+        // Connect to the database
+        require_once "Connection1.php";
+    // Prepare SQL query to fetch user details based on email and password
+    $query = "SELECT UserEmail, UserPassword FROM user_account WHERE UserEmail = :UserEmail AND UserPassword = :UserPassword";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(":UserEmail", $UserEmail);
+    $stmt->bindParam(":UserPassword", $UserPassword);
+    $stmt->execute();
 
-        // Execute the query
-        $stmt->execute();
+    // Fetch user's email and password from the database
+    $storedData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Check if a row is returned
-        if ($stmt->rowCount() > 0) {
-            // User exists, check password
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (password_verify($password, $user['password'])) {
-                // Password is correct, login successful
-                echo "Login successful!";
-                // Redirect to dashboard or some other page
-                // header("Location: dashboard.php");
-                // exit();
-            } else {
-                // Password is incorrect
-                echo "Invalid password.";
-            }
-        } else {
-            // User does not exist
-            echo "User does not exist.";
-        }
-    } else {
-        // Email or password not provided
-        echo "Please enter both email and password.";
+    if ($storedData && $storedData['UserEmail'] === $UserEmail && $storedData['UserPassword'] === $UserPassword) {
+        // Email and password match, redirect to index.html
+        header("Location: index.html");
+        exit();
     }
+        else {
+            // Incorrect email or password, redirect to Incorrect.html
+            header("Location: Incorrect.html");
+            exit();
+        }
+    } catch (PDOException $e) {
+        // Error handling
+        die("Query Failed: " . $e->getMessage());
+    }
+} else {
+    // Redirect if accessed directly
+    header("Location: login-signup.php");
+    exit();
 }
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-    <form class="login-inputbox" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <input type="text" name="email" placeholder="  EMAIL" />
-        <input type="password" name="password" placeholder="  PASSWORD" />
-        <button type="submit">LOG IN</button>
-    </form>
-</body>
-</html>
