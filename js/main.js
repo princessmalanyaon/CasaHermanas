@@ -324,18 +324,72 @@ $(".show-cart").on("change", ".item-count", function (event) {
 });
 
 displayCart();
+/***END OF CART* */
 
+<<<<<<< Updated upstream
 document.addEventListener("DOMContentLoaded", function () {
   const clearCartBtn = document.getElementById("clear-cart-btn");
   const totalCountSpan = document.querySelector(".total-count");
+=======
+/***********CHECKOUT************/
+// Function to update the checkout modal with cart items and total amount
+function updateCheckoutModal() {
+  var cartArray = shoppingCart.listCart();
+  var checkoutCartItems = document.getElementById("checkoutCartItems");
+  var checkoutTotalAmount = document.getElementById("checkoutTotalAmount");
+  var cartTotal = shoppingCart.totalCart();
+>>>>>>> Stashed changes
 
-  // Function to clear the cart and reset the count
-  clearCartBtn.addEventListener("click", function () {
-    // Clear the cart (you can customize this logic based on your implementation)
-    document.querySelector(".show-cart").innerHTML = "";
-    document.querySelector(".total-cart").textContent = "0";
+  // Clear previous items in the checkout modal
+  checkoutCartItems.innerHTML = "";
 
-    // Reset the total count displayed on the button
-    totalCountSpan.textContent = "0";
+  // Populate cart items in the checkout modal
+  cartArray.forEach(function (item) {
+    var itemRow = document.createElement("tr");
+    itemRow.innerHTML = `
+      <td>${item.name}</td>
+      <td>$${item.price}</td>
+      <td>${item.count}</td>
+      <td>$${(item.price * item.count).toFixed(2)}</td>
+    `;
+    checkoutCartItems.appendChild(itemRow);
   });
+
+  // Update total amount in the checkout modal
+  checkoutTotalAmount.textContent = cartTotal.toFixed(2);
+}
+
+// Display the checkout modal when "Order now" button is clicked
+$("#orderNowBtn").click(function () {
+  // Close the cart modal if it's open
+  $("#cartModal").modal("hide");
+  updateCheckoutModal(); // Update the checkout modal content
+  $("#checkoutModal").modal("show"); // Show the checkout modal
 });
+<<<<<<< Updated upstream
+=======
+
+// Handle form submission
+$("#checkoutForm").submit(function (event) {
+  event.preventDefault(); // Prevent default form submission
+
+  // Get selected payment method and delivery option
+  var paymentMethod = $("input[name='paymentMethod']:checked").val();
+  var deliveryOption = $("#deliveryOption").val();
+
+  // You can further process the checkout information here, such as sending it to a server
+
+  // Clear the cart after successful order
+  shoppingCart.clearCart();
+  displayCart(); // Update the cart display
+
+  // Close the checkout modal after submitting the form
+  $("#checkoutModal").modal("hide");
+});
+
+// Close modal when clicking the "x" button
+$("#checkoutModal .close").click(function () {
+  $("#checkoutModal").modal("hide");
+});
+/****END OF CHECKOUT*****/
+>>>>>>> Stashed changes
