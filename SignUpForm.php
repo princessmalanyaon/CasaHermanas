@@ -5,6 +5,14 @@ $UserFullName = $_POST["UserFullName"];
 $UserEmail = $_POST["UserEmail"];
 $UserPassword = $_POST["UserPassword"];
 
+
+    // Check if any of the form fields are empty
+    if(empty($UserFullName) || empty($UserEmail) || empty($UserPassword)) {
+        echo '<script>alert("Fill all fields");</script>';
+        echo '<script>window.history.back();</script>';
+        exit(); // Stop further execution of the code
+    }
+
 try{
     //Links to Connection.php
     require_once "Connection1.php";
