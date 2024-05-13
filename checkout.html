@@ -184,6 +184,8 @@
       ></div>
       <!-- Booking End -->
 
+      
+
       <div class="container mt-5">
         <!-- Payment and Delivery Details Form -->
         <form id="order-form">
@@ -213,6 +215,65 @@
           <button type="submit" class="btn btn-primary">Complete Order</button>
         </form>
       </div>
+
+
+      <div class="container mt-5">
+        <h1>Checkout</h1>
+        <div id="checkoutContent">
+          <!-- Cart items will be displayed here -->
+        </div>
+        <div id="totalPrice"></div>
+      </div>
+    
+      <!-- Include Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script>
+        // Function to display cart items on the checkout page
+        function displayCheckoutCart(cartArray, totalPrice) {
+          var output = "";
+          for (var i in cartArray) {
+            output +=
+              "<div class='row mb-2'>" +
+              "<div class='col'>" +
+              cartArray[i].name +
+              "</div>" +
+              "<div class='col'>" +
+              cartArray[i].price +
+              "</div>" +
+              "<div class='col'>" +
+              cartArray[i].count +
+              "</div>" +
+              "<div class='col'>" +
+              cartArray[i].total +
+              "</div>" +
+              "</div>";
+          }
+          $("#checkoutContent").html(output);
+          $("#totalPrice").html("<h4>Total Price: $" + totalPrice + "</h4>");
+        }
+    
+        // Dummy function to simulate fetching cart data
+        function getCartData() {
+          // Simulated cart data (replace this with actual cart data)
+          var cartArray = [
+            { name: "Item 1", price: 10, count: 2, total: 20 },
+            { name: "Item 2", price: 15, count: 1, total: 15 },
+          ];
+          var totalPrice = 35; // Simulated total price
+    
+          return { cartArray, totalPrice };
+        }
+    
+        // When the Order now button is clicked, transfer cart data to checkout page
+        $(".btn-order-now").click(function () {
+          var { cartArray, totalPrice } = getCartData();
+          displayCheckoutCart(cartArray, totalPrice);
+        });
+      </script>
+
+
 
       <!-- Include jQuery and Bootstrap JS -->
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
