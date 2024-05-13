@@ -194,23 +194,92 @@
               <div>Total price: $<span class="total-cart"></span></div>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">Order now</button>
+              
+              <button id="orderNowBtn" type="button" class="btn btn-primary">Order now</button>
               <!--<button type="button" class="btn btn-danger" id="clear-cart-btn">Clear Cart</button>-->
             </div>
           </div>
         </div>
       </div>
 
-      <!--PRODUCTS-->
+      <!--END OF CART MODAL-->
+
+      <!--START OF CHECKOUT MODAL-->
+      <form id="checkoutForm">
+        <!-- Modal for Checkout Payment -->
+        <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Cart Summary -->
+                <div class="mb-3">
+                  <h6>Order Summary</h6>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody id="checkoutCartItems">
+                      <!-- Product Information -->
+                      <tr>
+                        <td><input type="text" name="productName" value="Product 1"></td>
+                        <td><input type="number" name="productPrice" value="10.00" step="0.01"></td>
+                        <td><input type="number" name="productQuantity" value="1"></td>
+                        <td><input type="text" name="productTotal" value="10.00" readonly></td>
+                      </tr>
+                      <!-- Add more rows for additional products -->
+                    </tbody>
+                  </table>
+                  <div>Total Amount: $<span id="checkoutTotalAmount"></span></div>
+                </div>
+      
+                <!-- Payment Method -->
+                <div class="mb-3">
+                  <h6>Select Payment Method</h6>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="paymentMethod1" value="creditCard" checked>
+                    <label class="form-check-label" for="paymentMethod1">
+                      Cash on Delivery
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="paymentMethod2" value="paypal">
+                    <label class="form-check-label" for="paymentMethod2">
+                      Credit Card
+                    </label>
+                  </div>
+                </div>
+      
+                <!-- Delivery Options -->
+                <div class="mb-3">
+                  <h6>Select Delivery Option</h6>
+                  <select class="form-select" id="deliveryOption" name="deliveryOption">
+                    <option value="standard">Standard Delivery</option>
+                    <option value="express">Express Delivery</option>
+                  </select>
+                </div>
+      
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary">Place Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!--END OF CHECKOUT PAYMENT-->
 
 
+      <!--START OF PRODUCTS-->
       <div class="container-xxl py-5">
         <div class="container">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -1631,6 +1700,8 @@
         ><i class="fas fa-shopping-cart"></i>
         <span class="total-count">0</span></a
       >
+
+
 
       <!-- Back to Top -->
       <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
