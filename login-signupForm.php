@@ -196,16 +196,13 @@
           <a href="#">FORGET PASSWORD?</a>
           </div>
 
-            <a href="#">FORGET PASSWORD?</a>
-          </div>
-
           <div class="signup login-hide">
             <h2>SIGN UP</h2>
             <form method="post" action="SignUpForm.php" class="login-inputbox">
               <input type="text" name="UserFullName" placeholder="  FULLNAME" />
               <input type="text" name="UserEmail" placeholder="  EMAIL" />
               <input type="password" name="UserPassword" placeholder="  PASSWORD" />
-              <button">SIGN UP</button>
+              <button>SIGN UP</button>
             </form>
 
           </div>
