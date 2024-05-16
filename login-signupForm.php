@@ -185,15 +185,26 @@
         <!-- backbox -->
 
         <div class="login-frontbox">
+<<<<<<< HEAD
  
             <div class="login">
            <h2>LOG IN</h2>
+=======
+          <div class="login">
+            <h2>LOG IN</h2>
+>>>>>>> Branch_Ederson
            <form class="login-inputbox" method="post" action="LogInForm.php"> <!-- Replace "login_handler.php" with the actual filename of your PHP login script -->
           <input type="text" name="email" placeholder="EMAIL" />
           <input type="password" name="password" placeholder="PASSWORD" />
           <button type="submit">LOG IN</button>
           </form>
           <a href="#">FORGET PASSWORD?</a>
+<<<<<<< HEAD
+=======
+          </div>
+
+            <a href="#">FORGET PASSWORD?</a>
+>>>>>>> Branch_Ederson
           </div>
 
           <div class="signup login-hide">
@@ -202,7 +213,11 @@
               <input type="text" name="UserFullName" placeholder="  FULLNAME" />
               <input type="text" name="UserEmail" placeholder="  EMAIL" />
               <input type="password" name="UserPassword" placeholder="  PASSWORD" />
+<<<<<<< HEAD
               <button>SIGN UP</button>
+=======
+              <button">SIGN UP</button>
+>>>>>>> Branch_Ederson
             </form>
 
           </div>
